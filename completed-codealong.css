@@ -1,0 +1,71 @@
+/* --- Example 1: Transform --- */
+
+/* The :hover pseudo-class applies styles when the user's mouse is over the element. */
+.transform-example:hover {
+  /* The 'transform' property lets you modify the element's appearance.
+     Here, we are applying two transformations at once:
+     - rotate(45deg): Rotates the element 45 degrees clockwise.
+     - scale(1.2): Makes the element 20% larger.
+     Note: The change happens instantly without a transition. */
+  transform: rotate(45deg) scale(1.2);
+}
+
+
+/* --- Example 2: Transition --- */
+
+.transition-example {
+  /* The 'transition' property makes changes to other properties smooth.
+     This is the shorthand property. Let's break it down:
+     - 'transform': The CSS property we want to animate. You could use 'all' to animate any property change.
+     - '0.4s': The duration of the animation (0.4 seconds).
+     - 'ease-in-out': The timing function. This makes the animation start slow, speed up, then end slow.
+     This property is placed on the base element, not the :hover state. */
+  transition: transform 0.4s ease-in-out;
+}
+
+.transition-example:hover {
+  /* The transform is the same as the first example.
+     But now, because of the 'transition' property on the base class,
+     the browser will smoothly animate from the original state to this new state. */
+  transform: rotate(45deg) scale(1.2);
+}
+
+
+/* --- Example 3: Animation & @keyframes --- */
+
+/* @keyframes defines the steps of an animation sequence.
+   We give our animation a name, in this case, 'pulse'. */
+@keyframes pulse {
+  /* '0%' is the starting point of the animation. */
+  0% {
+    transform: scale(1);
+    background-color: #3498db; /* Start blue */
+  }
+  /* '50%' is the midpoint of the animation. */
+  50% {
+    transform: scale(1.1); /* Scale up by 10% */
+    background-color: #e74c3c; /* Change to red */
+  }
+  /* '100%' is the end point of the animation. */
+  100% {
+    transform: scale(1); /* Return to original size */
+    background-color: #3498db; /* Return to blue */
+  }
+}
+
+.animation-example {
+  /* The 'animation' property applies the @keyframes rule to the element.
+     This is the shorthand version. */
+
+  /* animation-name: The name of the @keyframes rule to use. */
+  animation-name: pulse;
+
+  /* animation-duration: How long one cycle of the animation should take. */
+  animation-duration: 2s;
+
+  /* animation-iteration-count: How many times to repeat the animation. 'infinite' means it never stops. */
+  animation-iteration-count: infinite;
+
+  /* animation-timing-function: The speed curve for the animation, similar to transitions. */
+  animation-timing-function: ease-in-out;
+}
